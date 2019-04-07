@@ -20,6 +20,10 @@
     "default_icon": "icons/sample_icon.png",
     "default_title": "BetterFocus",
     "default_popup": "popup/toggle.html"
+  },
+
+  "background": {
+    "scripts": ["background/background.js"]
   }
 
 }
