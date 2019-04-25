@@ -19,11 +19,13 @@ function doNothing() {
 function onChange(tabId, changeInfo, tabInfo) {
 
 	if(changeInfo.url) {
-		browser.storage.local.set({tabId: changeInfo.url});
+		obj = {};
+		obj[tabId] = {url: changeInfo.url, hasChanged: false};
+		browser.storage.local.set(obj);
 		browser.storage.local.get("bfToggle")
 		.then(execute, doNothing);
 	}
 
 }
 
-browser.tabs.onUpdated.addListener(onChange)
+browser.tabs.onUpdated.addListener(onChange);
