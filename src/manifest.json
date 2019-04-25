@@ -13,7 +13,7 @@
   },
 
   "permissions": [
-    "activeTab", "storage", "tabs", "*://*/*"
+    "activeTab", "storage", "tabs", "*://*/*", "webRequest", "webRequestBlocking"
   ],
 
   "browser_action": {
@@ -24,6 +24,8 @@
 
   "background": {
     "scripts": ["background/background.js"]
-  }
+  },
+
+  "web_accessible_resources": ["redirect.html"]
 
 }

@@ -1,31 +1,49 @@
+var shouldRedirect = false; //whether or not to redirect 
 
-function execute(item) {
+//if bfToggle is true, we should redirect.
+function editToggle(item) {
+	shouldRedirect = item.bfToggle;
+}
 
-	if(item.bfToggle == false) { //if the extension is turned off, don't do anything
-		return;
-	} else {
-		browser.tabs.executeScript({file: "/content_scripts/bfOn.js"});
+//redirect the request to the extension page
+async function onChange(requestDetails) {
+
+	await browser.storage.local.get("bfToggle").then(editToggle, function() {}); 
+	//we should redirect if toggle is available, otherwise nothing.
+
+	if(shouldRedirect) {
+		var querying = browser.tabs.query({currentWindow: true, active: true});
+		querying.then(addToMemory, onTabsError);
+
+		var resourceUrl = browser.runtime.getURL("redirect.html");
+
+		return {
+			redirectUrl: resourceUrl
+		};
+	} else return; //don't do anything if we're not redirecting.
+
+}
+
+function onTabsError(error) {
+	console.log(`Error: ${error}`);
+}
+
+//add the currently selected tab id and url to memory
+function addToMemory(tabs) {
+
+	for(let tab of tabs) {
+		var obj = {};
+		obj[tab.id] = {address: tab.url};
+		var setOp = browser.storage.local.set(obj);
+		setOp.then(function() {console.log("Storage success");},
+			function() {console.log("Storage failure");}
+			);
 	}
 
 }
 
-function doNothing() {
-	return;
-}
-
-//if the toggle is set, do something in the background based on its value
-//otherwise, don't do anything
-
-function onChange(tabId, changeInfo, tabInfo) {
-
-	if(changeInfo.url) {
-		obj = {};
-		obj[tabId] = {url: changeInfo.url, hasChanged: false};
-		browser.storage.local.set(obj);
-		browser.storage.local.get("bfToggle")
-		.then(execute, doNothing);
-	}
-
-}
-
-browser.tabs.onUpdated.addListener(onChange);
+browser.webRequest.onBeforeRequest.addListener(
+	onChange,
+	{urls: ["<all_urls>"]},
+	["blocking"]
+	);
