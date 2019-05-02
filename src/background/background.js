@@ -17,8 +17,7 @@ async function onChange(requestDetails) {
 		//get the current tab and add its details to memory.
 		//then redirect to the resource.
 		if(shouldRedirect) {
-			var querying = browser.tabs.query({currentWindow: true, active: true});
-			querying.then(addToMemory, onTabsError);
+			addToMemory(requestDetails.tabId, requestDetails.url);
 
 			var resourceUrl = browser.runtime.getURL("redirect.html");
 
@@ -34,17 +33,15 @@ function onTabsError(error) {
 }
 
 //add the currently selected tab id and url to memory
-function addToMemory(tabs) {
+function addToMemory(tabId, toAddress) {
 
-	for(let tab of tabs) {
 		var obj = {};
-		var tabStr = tab.id.toString();
-		obj[tabStr] = {address: tab.url};
+		var tabStr = tabId.toString();
+		obj[tabStr] = {address: toAddress};
 		var setOp = browser.storage.local.set(obj);
 		setOp.then(function() {console.log("Storage success");},
 			function() {console.log("Storage failure");}
 			);
-	}
 
 }
 
