@@ -8,9 +8,10 @@ function editToggle(item) {
 //redirect the request to the extension page
 async function onChange(requestDetails) {
 
-	console.log(requestDetails.originUrl);
+
 	//we should only be redirecting if we're not coming from the redirect page
-	if(!browser.runtime.getURL("redirect.html").includes(requestDetails.originUrl)) {
+	//also, we only want to do this for main_frame requests
+	if(!browser.runtime.getURL("redirect.html").includes(requestDetails.originUrl) && requestDetails.type == "main_frame") {
 		await browser.storage.local.get("bfToggle").then(editToggle, function() {}); 
 		//we should redirect if toggle is available, otherwise nothing.
 
