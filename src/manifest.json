@@ -4,7 +4,7 @@
   "name": "BetterFocus",
   "version": "1.0",
 
-  "description": "Makes you focus better on the Internet by making sure you're browsing mindfully. Upon going to each webpage, the extension will ask you why you went to the webpage and whether it has to do with your overall purposes for using the Internet at that time.",
+  "description": "BetterFocus helps you to use the Internet more mindfully and prevent yourself from wasting time on the web. Upon going to each webpage, the extension will ask you why you went to the webpage and whether it has to do with your overall purposes for using the Internet at that time.",
 
   "homepage_url": "https://github.com/japierreSWE/betterfocus",
 
