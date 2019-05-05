@@ -27,6 +27,15 @@ async function onChange(requestDetails) {
 			};
 		} else return; //don't do anything if we're not redirecting.
 	}
+
+	//we should clear up the memory if we came from the redirect page.
+	//otherwise, we'll have local storage leaks.
+	if(browser.runtime.getURL("redirect.html").includes(requestDetails.originUrl)) {
+
+		browser.storage.local.remove(requestDetails.tabId.toString());
+
+	}
+
 }
 
 function onTabsError(error) {

@@ -9,7 +9,7 @@
   "homepage_url": "https://github.com/japierreSWE/betterfocus",
 
   "icons": {
-    "48": "icons/betterfocus_icon_96.png"
+    "48": "icons/betterfocus_icon_48.png"
   },
 
   "permissions": [
