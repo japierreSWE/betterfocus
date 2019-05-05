@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "BetterFocus",
-  "version": "1.0",
+  "version": "1.1",
 
   "description": "BetterFocus helps you to use the Internet more mindfully and prevent yourself from wasting time on the web. Upon going to each webpage, the extension will ask you why you went to the webpage and whether it has to do with your overall purposes for using the Internet at that time.",
 
