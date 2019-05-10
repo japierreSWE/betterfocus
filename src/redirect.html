@@ -3,26 +3,29 @@
 	
 	<head>
 		<title>BetterFocus</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
 		
-		<b>Answer the questions below. After answering, contemplate on whether you should continue going to the webpage.</b>
+		<div>
+			<b class="title">Answer the questions below. After answering, contemplate on whether you should continue going to the webpage.</b>
 
-		<p>Why did you go to this webpage?</p>
-		<textarea id="text1"></textarea><br>
+			<p class="question">Why did you go to this webpage?</p>
+			<textarea id="text1" class="answer"></textarea><br>
 
-		<p>Do you have any tasks to do on the Internet? If so, what are they?</p>
-		<textarea id="text2"></textarea><br>
+			<p class="question">Do you have any tasks to do on the Internet? If so, what are they?</p>
+			<textarea id="text2" class="answer"></textarea><br>
 
-		<p>Does your reason for going on the webpage acheive what you need to do?</p>
-		<textarea id="text3"></textarea><br>
+			<p class="question">Does your reason for going on the webpage acheive what you need to do?</p>
+			<textarea id="text3" class="answer"></textarea><br>
 
-		<p>Did you go to this webpage for entertainment reasons or because you were bored?</p>
-		<textarea id="text4"></textarea><br>
+			<p class="question">Did you go to this webpage for entertainment reasons or because you were bored?</p>
+			<textarea id="text4" class="answer"></textarea><br>
 
-		<p id="error"></p>
-		<button id="button">Go to webpage</button>
+			<p id="error"></p>
+			<button id="button">Go to webpage</button>
+		</div>
 	</body>
 	<script src="redirect.js"></script>
 </html>
