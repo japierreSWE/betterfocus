@@ -1,5 +1,5 @@
 div {
-	width: 700px;
+	width: 800px;
 	margin: auto;
 }
 
@@ -9,7 +9,7 @@ body {
 }
 
 .title {
-	font-size: 1.5em;
+	font-size: 1.6em;
 }
 
 .question {
@@ -17,8 +17,9 @@ body {
 }
 
 .answer {
-	width: 500px;
-	height: 75px;
+	width: 200px;
+	height: 30px;
+	font-size: 1.125em;
 }
 
 button {
